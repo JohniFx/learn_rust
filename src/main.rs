@@ -2,10 +2,11 @@ use std::io;
 
 fn main() {
     another_function(5);
+    variables();
 
 }
 
-fn another_function (x: i32 ){
+fn another_function (_x: i32 ){
     println!("I am an other function");
 }
 
@@ -49,10 +50,10 @@ fn variables(){
     let _c = 'z'; // single  quotes!
 
     // compound types:tuples and arrays
-    let tup: (i32,f64, u8)= (500, 6.4, 1); // fixed length
+    let _tup: (i32,f64, u8)= (500, 6.4, 1); // fixed length
     
     let tupi = (100, 7.2, 'z');
-    let (x,y,z) = tupi; // destructuring. breaks the single tuple
+    let (x,_y,z) = tupi; // destructuring. breaks the single tuple
     println!(" tuple values: x: {x} z: {z}");
 
     // array type: fixed length  same type collection of elements
