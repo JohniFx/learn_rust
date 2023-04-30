@@ -1,5 +1,6 @@
 use std::io;
 
+// terrible colors, 
 fn main() {
     another_function(5);
     variables();
