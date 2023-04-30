@@ -1,11 +1,100 @@
 use std::io;
+/*
+ *  Statements and expressions
+ *  Rust is an expression based language
+ *  statements dont evaluate to a value, and expressed as ()
+ * */
 
-// terrible colors, 
-// update locally
 fn main() {
+    for_loop();
+    counting();
+    counting_old_way();
     another_function(5);
     variables();
 
+    // expression does not have semicolon at the end
+    // expressions evaluate to a value
+    // statement has a semicolon at the end  and no return value
+    let y = {
+        let x = 3;
+        x + 1
+    };
+    let f = five();
+    println!("five return: {f}");
+    let p1 = plus_one(f);
+    println!("five return: {p1}");
+    control_flow();
+}
+
+// convert Fahrenheit to celsius
+// Generate nth fibonacci numbers
+
+
+fn for_loop(){
+    let numbers = [1,2,3,4,5];
+
+    for n in numbers{
+        println!("element: {n}");
+    }
+
+    for x in (1..4).rev(){
+        println!("counting with rev and for range: {x}");
+    }
+}
+
+fn counting(){
+    let mut counter = 0;
+
+    let result = loop{
+        counter += 1;
+        if counter == 10{
+            break counter *2;
+        }
+    };
+    println!(" the result is {result}");
+}
+
+fn counting_old_way(){
+    let mut counter: i32 = 0;
+
+    loop{
+        counter += 1;
+        if counter == 10{
+            break;
+        }
+    }
+    print!("old way: {counter}");
+}
+
+// Control Flow
+fn control_flow(){
+    let number = 15;
+
+    // if is an expression
+    if number < 5{
+        println!( "condition was true");
+    } else if number % 3 == 0{
+        println!("osztható 3-mal");
+    } 
+    else if number % 5 == 0{
+        println!("osztható 5 tel is");
+    }
+    else{
+
+        println!( "condition as false")
+    }
+    let res = if number % 10 == 0 {3} else {4};
+    println!("result is {}", res);
+}
+
+// functions with return value
+// return value is the value of the final expression implicitly
+fn five()-> i32{
+    5
+}
+
+fn plus_one(x: i32)-> i32{
+    x + 1 // ide nemkell ; mert akkor statement lesz és ()-t ad
 }
 
 fn another_function (_x: i32 ){
