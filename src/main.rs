@@ -11,6 +11,7 @@ fn another_function (_x: i32 ){
     println!("I am an other function");
 }
 
+// lesson 1
 fn variables(){
     // variables and mutability
     let mut x = 5;
