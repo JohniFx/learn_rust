@@ -29,7 +29,6 @@ fn main() {
 // convert Fahrenheit to celsius
 // Generate nth fibonacci numbers
 
-
 fn for_loop(){
     let numbers = [1,2,3,4,5];
 
