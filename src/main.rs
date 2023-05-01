@@ -6,6 +6,7 @@ use std::io;
  * */
 
 fn main() {
+    ownership();
     for_loop();
     counting();
     counting_old_way();
@@ -15,7 +16,7 @@ fn main() {
     // expression does not have semicolon at the end
     // expressions evaluate to a value
     // statement has a semicolon at the end  and no return value
-    let y = {
+    let _y = {
         let x = 3;
         x + 1
     };
@@ -24,6 +25,51 @@ fn main() {
     let p1 = plus_one(f);
     println!("five return: {p1}");
     control_flow();
+}
+
+/* Ownership
+ * each value has an owner
+ * there can be only one owner
+ * if owner goes out of scope, value dropped
+ *
+ */
+fn ownership(){
+    // string literal, fix size, immutable, stack
+    let _s1 = "Hello";
+    
+    // the string type CAN be mutated, heap
+    let mut s = String::from("Hello");
+
+    s.push_str(", world!"); // append
+    println!("{}", s);
+    ownership_move();
+
+    // ownership and functions
+    let s = String::from("Hello");
+    takes_ownership(s);
+
+    println!("s here not exists anymore: {s}");
+}
+
+fn takes_ownership(my_string: String){
+    println!("Ownership taken: {}", my_string);
+} // string dropped
+
+fn takes_and_gives_back(str: String)-> String{
+    str // ide nem kell; mert akkor nem adja vissza!!
+}
+
+fn ownership_move(){
+    let x = 5;
+    let _y = x; // copy the value of x and bind it to y
+
+    let s1 = String::from("hello");
+    let s2 = s1.clone(); // data on the stack (ptr, len, capacity) copied
+                 // but the values on the heap not
+                 // points to the same heap
+                 //
+    println!("s1 cloned into s2; print s1: {}, s2: {})", s1, s2);
+
 }
 
 // convert Fahrenheit to celsius
