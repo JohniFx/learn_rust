@@ -44,11 +44,35 @@ fn ownership(){
     println!("{}", s);
     ownership_move();
 
-    // ownership and functions
-    let s = String::from("Hello");
-    takes_ownership(s);
+    // return multiple valies: use a value but not taking ownership
+    let s1 = String::from("hello");
+    // let (s2, len) = calculate_length(s1);
+    // println!("length of '{}' is {}", s2, len);
 
-    println!("s here not exists anymore: {s}");
+    let len = calculate_length_with_reference(&s1);
+    println!("** with reference: length of '{}' is {}", s1, len);
+
+    change_reference(&mut s);
+    println!("{}", s);
+
+
+    // ownership and functions
+    // let s = String::from("Hello");
+    // takes_ownership(s);
+    // println!("s here not exists anymore: {s}");
+}
+
+fn change_reference(s: &mut String){
+    s.push_str(", world changing mutable reference");
+}
+
+fn calculate_length_with_reference(s: &String) -> usize{
+    s.len() // nincs ; !! mertt akkr nem adja vissza
+} // s dropped here, but s is a reference
+
+fn calculate_length(s:String)-> (String, usize){
+    let length = s.len();
+    (s, length)
 }
 
 fn takes_ownership(my_string: String){
