@@ -1,11 +1,9 @@
 use std::io;
-/*
- *  Statements and expressions
- *  Rust is an expression based language
- *  statements dont evaluate to a value, and expressed as ()
- * */
 
+
+#allow(unused)]
 fn main() {
+    slice_type();
     ownership();
     for_loop();
     counting();
@@ -25,6 +23,48 @@ fn main() {
     let p1 = plus_one(f);
     println!("five return: {p1}");
     control_flow();
+}
+fn slice_type(){
+      // task: function that takes a string of words
+      // separated by spaces and returns the first word it finds
+      // in that string
+      let mut s = String::from("Hello world!"); 
+      let word = first_word(&s);
+      s.clear();
+      
+
+      // string slices
+      let s = String::from("these are some words");
+      let w1 = &s[0..5];
+      let w2 = &s[6..9];
+      println!("w1: {w1} w2: {w2}");
+        
+      let first_word = first_word_slices(&s);
+      println!("first_word:{}", first_word);
+
+}
+
+fn first_word_slices(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate(){
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    &s[..]
+}
+
+
+fn first_word(s: &String) -> usize{
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate(){
+        if item == b' ' { // byte literal syntax
+            return i; // i is the position
+        }
+    }
+    s.len()
 }
 
 /* Ownership
