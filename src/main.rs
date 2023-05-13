@@ -1,7 +1,6 @@
 use std::io;
 
 #[allow(unused)]
-
 fn main() {
 
     /*
