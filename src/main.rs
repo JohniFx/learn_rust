@@ -74,7 +74,6 @@ struct User {
 fn slice_type() {
     // task: function that takes a string of words
     // separated by spaces and returns the first word it finds
-    // in that string
     let mut s = String::from("Hello world!");
     let word = first_word(&s);
     s.clear();
